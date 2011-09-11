@@ -1,5 +1,5 @@
 (ns is-saga-open.core
-  (:use compojure.core date-clj)
+  (:use compojure.core date-clj [hiccup core page-helpers])
   (:require [compojure.route :as route]
             [compojure.handler :as handler]))
 (defn weekends []
