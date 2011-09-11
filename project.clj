@@ -5,4 +5,4 @@
                  [compojure "0.6.4"]
                  [date-clj "1.0.1"]]
   :dev-dependencies [[lein-ring "0.4.5"]]
-  :ring {:handler is_saga_open.core/app})
+  :ring {:handler is-saga-open.core/app})
