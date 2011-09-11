@@ -14,11 +14,15 @@
   (if (is? (today) :monday) false (between? (today) (set-date (today) :hour 23 :minute 0) (set-date (tomorrow) :hour 3 :minute 0) )
   ))
 
-(if (is? (today) :weekend) (weekends) (weekday))
 
+
+(defn index-pg []
+  (html5 [:head [:title "Is SAGA Open?"] (include-css "/css/style.css")]
+          [:body [:h1 (if (is? (today) :weekend) (weekends) (weekday))]]
+  ))
 
 (defroutes main-routes
-  (GET "/" [] "<h1>Hello World Wide Web!</h1>")
+  (GET "/" [] (index-pg))
   (route/resources "/")
   (route/not-found "Page not found"))
 
