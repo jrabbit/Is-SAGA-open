@@ -17,13 +17,19 @@
   (if (is? (today) :monday) false (between? (today) (set-date (today) :hour 23 :minute 0) (set-date (tomorrow) :hour 3 :minute 0) )
   ))
 
-(defn index-pg []
-  (html5 [:head [:title "Is SAGA Open?"] (include-css "/css/style.css")]
-          [:body [:h1 (if (is? (today) :weekend) (weekends) (weekday))]]
+(defn yes []
+  (html5 [:head [:title "Is SAGA Open?"]]
+  (include-css "/css/yes.css") [:body [:h1 "Yes!"]]
+  ))
+(defn no []
+  (html5 [:head [:title "Is SAGA Open?"]]
+  (include-css "/css/no.css") [:body [:h1 "No! :("]
+  (if (night-truck)
+    [:h2 "But " (link-to "http://thenighttruck.com/" "The Night Truck")" is open"])]
   ))
 
 (defroutes main-routes
-  (GET "/" [] (index-pg))
+  (GET "/" [] (if (if (is? (today) :weekend) (weekends) (weekday)) (yes) (no)))
   (route/resources "/")
   (route/not-found "Page not found"))
 
