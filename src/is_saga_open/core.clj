@@ -14,7 +14,7 @@
   (or (open 7 30 16 0) (open 17 0 19 0)
     ))
 (defn night-truck []
-  (if (is? (today) :monday) false (between? (today) (set-date (today) :hour 23 :minute 0) (set-date (tomorrow) :hour 3 :minute 0) )
+  (if (is? (today) :monday) false (between? (today) (set-date (today) :hour 23 :minute 0 :second 0) (set-date (tomorrow) :hour 3 :minute 0 :second 0) )
   ))
 
 (defn yes []
